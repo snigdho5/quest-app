@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Generation Helpdesk</title>
+
+    <!-- Fonts -->
+    <link href="css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link href="css/googleapi.css" rel='stylesheet' type='text/css'>
+
+    <!-- Styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery.dataTables.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Lato';
+        }
+
+        .fa-btn {
+            margin-right: 6px;
+        }
+        
+    </style>
+	 <script src="assets/js/jquery.js"></script>
+     <script src="helpdesk.js"></script>
+</head>
+<body id="app-layout">
+  <input type="hidden" name="menu_type" id="menu_type" value="3" />
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+
+                <!-- Collapsed Hamburger -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Branding Image -->
+                 <div><img src="img/RPSG-LOGO-FINAL.png" alt="RPSG" height="50" width="120">&nbsp;&nbsp;&nbsp;&nbsp;
+                    Generation Helpdesk</div>
+            </div>
+
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                                                    
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                 Welcome  <script>document.write(window.localStorage.getItem("glb_val"));</script> <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#" onClick="logout();"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            </ul>
+                        </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+                    <script type="text/javascript">
+    function loadCSS(filename) {
+        var file = document.createElement("link");
+        file.setAttribute("rel", "stylesheet");
+        file.setAttribute("type", "text/css");
+        file.setAttribute("href", filename);
+
+        if (typeof file !== "undefined"){
+            document.getElementsByTagName("head")[0].appendChild(file)
+        }
+    }
+    /*loadCSS("//cdn.datatables.net/plug-ins/505bef35b56/integration/bootstrap/3/dataTables.bootstrap.css");
+    loadCSS("//cdn.datatables.net/responsive/1.0.7/css/responsive.bootstrap.min.css");
+            loadCSS("https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css");
+                    loadCSS("https://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css");
+                            loadCSS("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.19.0/codemirror.min.css");
+            loadCSS("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.19.0/theme/monokai.min.css");*/
+            </script>
+			<!--<div class="panel panel-default">
+    <div class="panel-body">
+        <ul class="nav nav-pills">
+            <li role="presentation" class="">
+                <a href="new_ticket.html">New Ticket</a>
+            </li>
+            <li role="presentation" class="">
+                <a href="complaint_status.html">Ticket Status
+                </a>
+            </li>
+            <li role="presentation" class="active">
+                <a href="show_ticket.html">Show Ticket
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>-->
+<script src="js/menu.js"></script>
+    <div class="panel panel-default">
+
+    <div class="panel-heading">
+        <h2>My Tickets
+            <a href="new_ticket.html" class="btn btn-primary pull-right">Create new ticket</a>
+        </h2>
+    </div>
+
+    <div class="panel-body">
+        <div id="message"></div>
+
+       <!-- <table id="example" class="table table-condensed table-stripe ddt-responsive" class="ticketit-table">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Subject</td>
+            <td>Category</td>
+            <td>Date</td>
+        </tr>
+    </thead>
+</table>    -->
+<table id="ticket_status" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Docket</th>
+                <th>Subject</th>
+                <th>User</th>
+                <th>Mobile</th>
+                <th>Detail</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                    <th>Docket</th>
+                    <th>Subject</th>
+                    <th>User</th>
+                    <th>Mobile</th>
+                    <th>Detail</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+</div>
+    </div>
+
+  
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+	<script>
+        $(document).ready(function() {
+            var userid = window.localStorage.getItem("glb_val");
+            //alert(userid);
+            var table =  $('#ticket_status').DataTable( {
+              //"ajax": 'http://webtest/corpdesk/public/docketAllocation/'+userid,
+              "ajax": {
+                "url": 'https://access.cesc.co.in/gendesk_api/docket_allocation_pending.php',
+                "type": "POST",
+                "data": {
+                "userid": userid
+                 }
+            },
+              "columnDefs": [ {
+              "targets": -1,
+              "data": null,
+              "defaultContent": '<button class="btn btn-primary pull-right">Details</button>'
+        } ]
+            } );
+
+            $('#ticket_status tbody').on( 'click', 'button', function () {
+            var data = table.row( $(this).parents('tr') ).data();
+            //alert( data[0] );
+            window.localStorage.setItem("glb_val1",data[0]);
+            window.location = "pending_complaint_details.html";
+
+    } );
+        } );
+	</script>
+</body>
+</html>

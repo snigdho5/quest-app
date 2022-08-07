@@ -1,0 +1,48 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\wamp64\\www\\corpdesk\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "D:\\wamp64\\www\\corpdesk\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "4,2,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "165,55,106",
+                        "endColumns": "63,50,58",
+                        "endOffsets": "224,101,160"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,119,170",
+                        "endColumns": "63,50,58",
+                        "endOffsets": "114,165,224"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "D:\\htdocs\\corpdesk\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "D:\\htdocs\\corpdesk\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "-1,2,-1",
+                        "startColumns": "-1,4,-1",
+                        "startOffsets": "-1,55,-1",
+                        "endColumns": "-1,50,-1",
+                        "endOffsets": "-1,101,-1"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,119,170",
+                        "endColumns": "63,50,58",
+                        "endOffsets": "114,165,224"
+                    }
+                }
+            ]
+        }
+    ]
+}

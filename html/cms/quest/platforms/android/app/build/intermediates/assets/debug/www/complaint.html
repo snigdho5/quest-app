@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>My CESC</title>
+        <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css">
+        <link rel="stylesheet" href="css/themes/default/jquery.mobile.structure-1.4.5.min.css">
+        <link rel="stylesheet" href="css/themes/default/jquery.mobile.icons-1.4.5.min.css">
+
+        <link rel="SHORTCUT ICON" href="assets/images/favicon.ico" />
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <!--<script src="autodividers-linkbar.js"></script>-->
+        <!--<link rel="stylesheet" href="autodividers-linkbar.css">-->
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/custom.css">
+        <!--<link rel="stylesheet" href="theme-classic.css">-->
+        <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+        <script type="text/javascript" src="canvasjs.min.js"></script>
+        <script src="assets/js/common.js"></script>
+
+        <script src="assets/js/mycesc.js"></script>
+        
+        <script src="helpdesk.js"></script>
+        
+    </head>
+    
+    <body>
+        <div data-role="page" class="jqm-demos" data-quicklinks="false" data-theme="none" id="new_complaint">
+            
+            <script type="text/javascript">
+                $(document).on('pageshow', '#new_complaint', function () {
+                    var load = false;
+                    if (load == false) {
+                        load = true;
+                        
+                        //** Login Validation Session
+                        app_load(1); //HINT: app_load('Page layer')
+
+                        //** HINT: createHeaderMenuFooter('Page layer', 'Header div id', 'Menu div id', 'Footer div id');
+                        createHeaderMenuFooter(1, 'newComplaintHeader', 'newComplaintMenu', 'newComplaintFooter');
+                        
+                        $("#detaildiv").show();
+                        $("#thanks_msg").hide();
+                    
+                        var emp_code = getEmp_code();
+                        //emp_code = '993330';
+                        $("#user_id").val(emp_code);
+                        
+                        var mobileNo = getMobile_no();
+                        $("#mobile").val(mobileNo);
+                        
+                        // Set all selected value to blank
+                        //$('select').val();
+                        
+                        
+                        // Get Department List
+                        getDepartmentList();
+                        
+                        // Get Main Problem Type
+                        getMainProblemType();
+                        
+                        // Get Location
+                        getLocationName();
+                        
+                    }
+
+                });
+                
+                
+                
+                $(document).on("pagecreate",'#new_complaint', function () {
+                    
+                    $('#dept').change(function() {
+                        $('#prob_type').val(''); // Reset Problem Type
+                        
+                        var dept = $("#dept").val();
+                        if (dept == '04' || dept == '03'){
+                            Call_Pagechange('complaint_it_or_commercial.html?dept_id='+dept+'','none','','complaint.html');
+                        }
+                    });
+                    $('#prob_type').change(function() {
+                        var dept = $("#dept").val();
+                        var prob_type = $("#prob_type").val();
+                        //alert(dept); alert(prob_type);
+                        if (dept == '02' && prob_type == '1'){
+                            Call_Pagechange('complaint_mains_hardware.html?dept_id='+dept+'','none','','complaint.html');
+                        } 
+                    });
+                });
+            </script>
+            
+            <!-- START: Header -->
+            <div data-role="header" data-position="fixed" class="my_header" id="newComplaintHeader"></div>
+            <!-- END: Header -->
+            
+            <div class="container-fluid pl10 pr10">
+                <div class="col-xs-12 body_main padding0 mb30">
+                    <div class="row text-center welcome_div">
+                        <div class="col-xs-12">IT Help Desk</div>
+                    </div>
+                    <h3 class="heading text-center">Complaint / Requisition Form</h3>
+                    
+                    <div id="alert"></div>
+                    
+                    <div id="detaildiv">
+                        <input type="hidden" name="user_id" id="user_id">
+                        <div class="col-xs-12 mt10 mb5">
+                            <label  class="my_lbl">Complaint Addressing Department</label>
+                        </div>
+                        <div class="col-xs-12 mb5">
+                            <select class="myInputBox" data-role="none" name='dept' id="dept">
+
+                            </select>
+                        </div>
+
+                        <div class="col-xs-12 mt10 mb5">
+                            <label  class="my_lbl">Select Problem Type</label>
+                        </div>
+                        <div class="col-xs-12 mb5">
+                            <select class="myInputBox" data-role="none" name="prob_type" id="prob_type" onchange="getSubProblemType(this.value);">
+
+                            </select>
+                        </div>
+
+                        <div class="col-xs-12 mt10 mb5">
+                            <label  class="my_lbl">Sub Category</label>
+                        </div>
+                        <div class="col-xs-6 mb5 pr5">
+                            <select class="myInputBox" data-role="none" name="sub_prob" id="sub_prob">
+
+                            </select>
+                        </div>
+                        <div class="col-xs-6 mb5 pl5" id="vendorDiv" style="display: none;">
+                            <select class="myInputBox" data-role="none" name="ven_id" id="ven_id">
+
+                            </select>
+                        </div>
+
+                        <div class="col-xs-12 mt10 mb5">
+                            <label  class="my_lbl">Select Your Location</label>
+                        </div>
+                        <div class="col-xs-12 mb5">
+                            <select class="myInputBox" data-role="none" name="nodal_center_id" id="nodal_center_id">
+
+                            </select>
+                        </div>
+
+                        <div class="col-xs-12 mt10 mb5">
+                            <label  class="my_lbl">Other Location</label>
+                        </div>
+                        <div class="col-xs-12 mb5">
+                            <input type="text" class="myInputBox" data-role="none" name="other_loc" id="other_loc">
+                        </div>
+
+                        <div class="col-xs-12 mt10 mb5">
+                            <label  class="my_lbl">Your Land / Mobile Number</label>
+                        </div>
+                        <div class="col-xs-12 mb5">
+                            <input type="tel" class="myInputBox" data-role="none" name="mobile" id="mobile" maxlength="10">
+                        </div>
+
+                        <div class="col-xs-12 mt10 mb5">
+                            <label  class="my_lbl">EPABX Number</label>
+                        </div>
+                        <div class="col-xs-12 mb5">
+                            <input type="tel" class="myInputBox" data-role="none" name="EpNo" id="EpNo" maxlength="6">
+                        </div>
+
+                        <div class="col-xs-12 mt10 mb5">
+                            <label  class="my_lbl">Problem Description</label>
+                        </div>
+                        <div class="col-xs-12 mb20">
+                            <textarea class="myInputBox" data-role="none" name="comp_desc" id="comp_desc" placeholder="Please enter your problem with in 130 characters"></textarea>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <button data-role="none" class="btn btn-info" onclick="return submitComplaint();" style="width: 100%;">SUBMIT</button>
+                            <!--<button data-role="none" class="btn btn-info" style="width: 100%;">SUBMIT</button>-->
+                        </div>
+                    </div>
+                    
+                    <div id="thanks_msg">
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- START: Left Menu -->
+            <div data-role="panel" class="jqm-navmenu-panel myNavMenu" data-position="left" data-display="overlay" data-theme="none" id="nav-panel">
+                <ul class="jqm-list ui-alt-icon ui-nodisc-icon" data-role="listview" id="newComplaintMenu">
+                    <li></li>
+                </ul>
+            </div>
+            <!-- END: Left Menu -->
+
+            <!-- START: Footer Div -->
+            <div data-role="footer" data-position="fixed" class="my_footer" id="newComplaintFooter"></div> 
+            <!-- END: Footer Div -->
+
+        </div>
+    </body>
+</html>

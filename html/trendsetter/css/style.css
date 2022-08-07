@@ -1,0 +1,652 @@
+body {
+    font-family: 'Merriweather', serif;
+    background-image: url(../images/bodyimagebg.jpg);
+    background-size: contain;
+}
+
+p,
+span {
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.color1 {
+    color: #d0ad68;
+}
+
+.color2 {
+    color: #d0ad68;
+}
+
+.morebutton {
+    padding: 8px 50px;
+    background: linear-gradient(330deg, #8e4609 12%, #b77c21 30%, #8e4609 67%, #8e4609 93%, #8e4609 100%);
+    border: 0px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}
+#add_social_links{
+    font-family: 'Merriweather', serif;
+}
+
+.swal-button {
+    background: #d0ad68;
+}
+
+.morebutton:hover {
+    color: #fff;
+}
+
+.morebutton .fa {
+    margin-left: 15px;
+    font-size: 22px;
+}
+
+.section {
+    text-align: center;
+}
+
+.morelink {
+    color: #fff;
+    text-align: center;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.morelink:hover {
+    color: #e0c680;
+}
+
+#header {
+    position: relative;
+    z-index: 99;
+}
+
+#header .logo {
+    position: absolute;
+    top: 30px;
+    left: 60px;
+}
+
+.previous .fa {
+    color: #54462b;
+}
+
+.next .fa {
+    color: #54462b;
+}
+
+#myContainer {
+    z-index: 98;
+    background-image: url(../images/left_bg.png);
+    background-repeat: no-repeat;
+    background-position: left bottom 18px;
+    background-size: 150px;
+}
+
+.innergap {
+    background-position: left bottom 50px !important;
+}
+
+#header .right_bg {
+    width: 150px;
+    right: 0px;
+    position: absolute;
+    z-index: 99;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+#footer .boxss {
+    background: #272728;
+}
+
+#footer .left_bg {
+    width: 350px;
+}
+
+#footer .boxss .f_box {
+    padding: 15px;
+    background: linear-gradient(to left, #f6eaa1 0%, #a66928 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 20px;
+    text-align: center;
+}
+
+#footer .boxss .f_box a {
+    background: linear-gradient(to left, #f6eaa1 0%, #a66928 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.text2 {
+    background: linear-gradient(to left, #a66928 72%, #f6eaa1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+.text3 {
+    background: linear-gradient(to left, #a66928 32%, #f6eaa1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+.boxs .leftbox {
+    background: #272728;
+    color: #fff;
+    padding: 15px;
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+label {
+    display: initial;
+}
+
+.textspan {
+    background: linear-gradient(to left, #f6eaa1 0%, #a66928 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.main_container .textspan{
+    font-size: 23px;
+}
+.main_container{
+    margin-top: 10px;
+}
+.main_container .color1 {
+    color: #d0ad68;
+    font-size: 22px;
+}
+.innerbgcont{
+    z-index: 9999;
+    /* background-image: url(../images/left_bg.png); */
+    background-repeat: no-repeat;
+    background-position: left bottom 20px;
+    background-size: 150px;
+    height: 80vh;
+}
+.footerleftbg{
+    position: fixed;
+    bottom: 104px;
+    width: 150px;
+    left: 0px;
+}
+
+.right_checkbox .form-check-input {
+    right: 0px;
+}
+
+.socialicon {
+    width: 70px;
+}
+
+.textcolor {
+    color: #a7a9a9;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #b2731d !important;
+}
+
+.right_checkbox .form-check-input {
+    margin-top: 0px;
+}
+
+#slide3 .right_checkbox .form-check-input {
+    margin-top: 7px;
+}
+
+.right_checkbox .form-check {
+    text-align: left;
+}
+
+.boxs .rightbox {
+    background: #4c4c4c;
+    color: #fff;
+    padding: 15px;
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+.boxs .leftbox a {
+    background: linear-gradient(to left, #f6eaa1 0%, #a66928 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 20px;
+}
+
+.boxs .rightbox a {
+    background: linear-gradient(to left, #f6eaa1 0%, #9b6228 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 20px;
+}
+
+.f_last {
+    padding: 10px 0px;
+    background: #000;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: #8e8e8e;
+}
+
+.fp-controlArrow.fp-prev:after {
+    content: "\f104";
+    font-family: fontawesome;
+    color: #18403c;
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    display: block;
+    width: 33px;
+    height: inherit;
+    font-size: 70px;
+}
+
+.fp-controlArrow.fp-next:after {
+    content: "\f105";
+    font-family: fontawesome;
+    color: #18403c;
+    position: absolute;
+    top: -50px;
+    right: 0;
+    display: block;
+    width: 33px;
+    height: inherit;
+    font-size: 70px;
+}
+
+.fp-controlArrow.fp-prev {
+    border: none;
+}
+
+.fp-controlArrow.fp-next {
+    border: none;
+}
+
+.formbg .input-group-text {
+    background: none;
+}
+
+.formbg .form-control {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #d0ad68;
+}
+
+.box_height {
+    height: 100px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.box_height img {
+    width: 80px;
+}
+
+.handles .form-control {
+    background: #1d2a28;
+    border: 1px solid #b2731d;
+}
+
+.previous {
+    position: absolute;
+    top: 42%;
+    left: 50px;
+    cursor: pointer;
+    color: white;
+    font-size: 70px;
+}
+
+.next {
+    position: absolute;
+    top: 42%;
+    right: 50px;
+    cursor: pointer;
+    color: white;
+    font-size: 70px;
+}
+
+.f_last small {
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 11px;
+    line-height: 16px;
+    color: #8e4609;
+    font-weight: bold;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active {
+    background-color: #d0ad68 !important;
+    border-color: #d0ad68 !important;
+}
+
+.btn-primary {
+    background-color: #d0ad68 !important;
+    border-color: #d0ad68 !important;
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+    box-shadow: none;
+}
+
+.btn.focus,
+.btn:focus {
+    box-shadow: none;
+}
+
+
+
+/* responsive_css */
+@media screen and (max-width: 1024px) {
+    .main_container{
+        margin-top: 150px;
+        text-align: center;
+}
+}
+@media screen and (max-width: 768px) {
+    .color1 {
+        font-size: 30px;
+    }
+
+    .socialicon {
+        width: 60px;
+    }
+
+    h3 {
+        font-size: 30px;
+    }
+
+    h4 {
+        font-size: 25px;
+    }
+
+    .next {
+        right: 20px;
+        font-size: 60px;
+    }
+
+    .previous {
+        left: 10px;
+        font-size: 60px;
+    }
+
+    #header .right_bg {
+        width: 110px;
+    }
+
+    #myContainer {
+        background-size: 110px;
+    }
+    .main_container{
+        margin-top: 150px;
+    }
+    .main_container .textspan {
+    font-size: 25px;
+}
+.innerbgcont {
+    background-size: 110px;
+    height: 72vh;
+}
+.boxs .rightbox{
+    height: 50px;
+}
+.boxs .leftbox{
+    height: 50px;
+}
+.boxs .rightbox a{
+    font-size: 17px;
+}
+.boxs .leftbox a{
+    font-size: 17px;
+}
+.footerleftbg {
+    width: 110px;
+}
+}
+
+@media screen and (max-width: 575px) {
+    .next {
+        right: 12px;
+        font-size: 40px;
+    }
+
+    .previous {
+        left: 12px;
+        font-size: 40px;
+    }
+
+    .logo2 {
+        width: 110px;
+    }
+
+    #header .right_bg {
+        width: 60px;
+    }
+
+    #header .logo {
+        top: 10px;
+        left: 10px;
+        width: 160px;
+    }
+
+    .color1 {
+        font-size: 23px;
+    }
+
+    .f_last span {
+        font-size: 13px;
+    }
+
+    .fp-controlArrow.fp-next:after {
+        font-size: 50px;
+    }
+
+    .fp-controlArrow.fp-prev:after {
+        font-size: 50px;
+    }
+
+    .fp-controlArrow.fp-prev {
+        left: 0px;
+    }
+
+    .fp-controlArrow.fp-next {
+        right: 0px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 17px;
+    }
+
+    #footer .left_bg {
+        width: 130px;
+    }
+
+    .boxs .rightbox {
+        width: 100%;
+        padding: 5px;
+        height: auto;
+    }
+
+    .boxs .leftbox a {
+        font-size: 16px;
+    }
+
+    .boxs .rightbox a {
+        font-size: 16px;
+    }
+
+    .boxs .leftbox {
+        width: 100%;
+        padding: 5px;
+        height: auto;
+    }
+
+    .f_last {
+        padding: 3px 0px;
+    }
+
+    .morebutton {
+        padding: 5px 30px;
+        font-size: 16px;
+    }
+
+    .box_height img {
+        width: 40px;
+    }
+
+    .box_height {
+        height: 40px;
+    }
+
+    label {
+        font-size: 12px;
+    }
+
+    .morebutton .fa {
+        margin-left: 10px;
+        font-size: 18px;
+    }
+
+    .hi_icon {
+        width: 25px;
+    }
+
+    .morelink {
+        margin-top: 20px;
+        display: inline-block;
+    }
+
+    .form-check-input {
+        margin-top: 6px;
+    }
+
+    .right_checkbox .form-check-input {
+        margin-top: 1px;
+    }
+
+    #gridCheck16,
+    #gridCheck17,
+    #gridCheck18,
+    #gridCheck19,
+    #gridCheck20,
+    #gridCheck21,
+    #gridCheck22,
+    #gridCheck23,
+    #gridCheck24 {
+        margin-top: 1px !important;
+    }
+
+    .socialicon {
+        width: 35px;
+    }
+
+    .handles {
+        margin-top: 10px;
+    }
+
+    .h5 {
+        font-size: 13px;
+    }
+
+    .handles .form-control {
+        height: auto;
+        padding: 2px 10px;
+    }
+
+    #footer .boxss .f_box {
+        padding: 5px 10px;
+        font-size: 15px;
+    }
+
+    .text2,
+    .text3 {
+        font-size: 20px;
+    }
+
+    .parking {
+        width: 40px;
+    }
+
+    .inox {
+        width: 40px;
+    }
+
+    .offers {
+        width: 40px;
+    }
+
+    #myContainer {
+        background-position: left bottom 65px;
+        background-size: 70px;
+    }
+
+    #header {
+        height: 40px;
+    }
+
+    .innergap {
+        background-position: left bottom 56px !important;
+    }
+
+    .main_container {
+        margin-top: 71px;
+        height: 62vh !important;
+        overflow: auto;
+    }
+
+    .h3 {
+        font-size: 24px;
+    }
+
+    .main_container .h3 {
+        font-size: 19px;
+    }
+    .main_container .textspan {
+    font-size: 16px;
+}
+.innerbgcont {
+    background-size: 70px;
+    height: 86vh;
+}
+.footerleftbg {
+    width: 65px;
+    bottom: 60px;
+}
+}

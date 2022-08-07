@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "lcoationautocomplete",
+  "private_key_id": "2fc9b8eef7d690feef3bb76ebf11aefaa041b0fe",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCuG4zBK0hOl7vU\nO+rbMA5+W5WvlYJdYABdNa5xKfM53Ai5Zbd7xsvxq50dBk4+SOus6DMVdMcrJdaC\nvJrCuNBsZDRuam8MVHAdxVf4BiPAN3SJHwmrFx16Y9Vyt5RcOCa3Sz+UAJiRwEQo\n/f74vt11DK0J2BVmmfonU9RR+fPyd3CPUzi5iK8JhdMuw+HSOtoWCrj6KuUqv2fE\n+trP532r5D8Tm/u8X4VI3S+DH3QjAJP4jjhw9aIiluDrFir28qgUxb+cXOhufUUo\nYHpEtO01eF83RbQri1R+knHO/IAaz+nk+XOFz7e7TR/ED1VYAQU8+6AWBHZ8qhh6\nAd8XoiiDAgMBAAECggEAF2wxZWizPjoqKgUy3/CjzS/4/+Qh46SfUpV+4E5/yuWP\nxDwA5oVPY+Bt2efCmEfVx4R9dYIpATmtQBgAzKLHDK32YnGt0CopOHgXZjs9OAYT\nMWycL7ODuGFnPRr2uelRRrti1EBi8Mi9jV448lyLDSIlbVDv9XD64auPbBqE97YM\ncjp+8ScPFdFlkMTFnkEUaudDTUnhphM54A3C3qxJrvs2l/0lmYUQRR4y9iI54sq2\nH6mvt50tjAKGbtmzMVj3gT02b2ED87VTywcqP4BR9evI/6QeXc2eyC8NVOXYET48\ndBrECtbtH9lMlWu4UujADf584ApTPZTx31hw23QfMQKBgQDyt08w0g7g7Ic0mD7c\nHQeRJh17uwdJzIqWS/N/KrH3CszJQj0Nxhb0y5WPuGupR37JeOqojR32NIH1aRXt\nfQJmB9L6vIK5enQjw86lDeUaSy/oIzFtY+Gmjv8jubnP4pEvChOMHDK4UYqyQSyM\nSn/SUhmdJn9dd2E+I5UnforIvQKBgQC3ovgDxZ6xdVi55XLkhN1C0iAzdIfjnFFa\nMdzSlU1w7n6lmG3io1ZuKeT1NLAJWhYUc65/YRPR1fXgm8L5HV4MDqGEQxMENfLi\nUQearX6ADxulTQjbADmkUiq2XLZ5lM1/po8t2IWOnXhG32KvsiBib/e+ajXP1V60\nKBf3EtbqPwKBgDJKLvtTmseZ2o3YObYLwcSeXB+F6gWtfs2TYRlpNESWlUXiFppi\n/+CqygtkT9JcQPXnut8/lgSsbnz10BhL/ZI8bseLBZ7+s0+xw4BJd73R9FQp7pTW\nzCthl5XEZq6fKCvR76jpMs0kABPdEyjiSse+QRZhoqQwFxLz9nSfcIwVAoGAQMtL\n32jXOZ5CFDWVeHQ47d7eZcl0OSdqvPxjAhqUHIjKPvutqg4f7PbzRmG0y1fx+n1m\n0KMcLynje8D55pQqHu76poRULWQrsxcMK9OTkvPBuW2Y9kz6CbTERVwpNnT+nU/T\nrUV8unltevRPCdc7/f+r1o/7NL4AkGilLBSFqFkCgYAXZCqPCrYZRtd4Pzf2F0GZ\nLXM8S0TihFv5NtgkkuO54FyfWRjZZ+oAUXFqQANXZtFqYINNrQ+dKz7tS1NcCpwz\nhrBiM2svMSgBn0Accx5QY80/ztcSpyJptW+D1M2U6xpI1njJ/0oQdMF6uaS9T0gp\nAI26nLygzno/KEBwehyoAQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "argus-analytic@lcoationautocomplete.iam.gserviceaccount.com",
+  "client_id": "113277499241650566781",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/argus-analytic%40lcoationautocomplete.iam.gserviceaccount.com"
+}

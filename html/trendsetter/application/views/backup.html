@@ -1,0 +1,117 @@
+
+<div class="banner">
+    <div class="owl-carousel owl-theme" id="mainbanner">
+        <?php foreach ($bannerArr as $key => $value) :?>
+        <div class="item">
+            <img src="<?=base_url()?>uploads/banner/actual/<?=$value['mimage']?>" alt="" class="img-responsive hidden-lg hidden-md" />
+            <img src="<?=base_url()?>uploads/banner/actual/<?=$value['image']?>" alt="" class="img-responsive hidden-sm hidden-xs" />
+            <div class="bannerbox" id="<?=$value['text_color']=='1'?'':'bannerboxnew'?>">
+                <h1><strong><?=$value['title']?></strong></h1>
+                <img src="<?=base_url()?>images/line<?=$value['text_color']=='1'?'':'02'?>.png" alt="" class="img-responsive line center-block" />
+                <p>“<?=$value['subtitle']?>”</p>
+                <p class="Scroll">Scroll to Explore</p>
+                <section id="section03" class="demo">
+                    <a href="#section04"><span></span></a>
+                </section>
+            </div>
+        </div>
+        <?php endforeach; ?>
+
+    </div>
+</div>
+<?php $this->load->view('include/knowledge_section',array('id'=>'section04'))?>
+<div class="container-fluid awardboxbg">
+	<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 ourbusinessbg">
+            <p>"To be the most trusted advisors for our clients and the most preferred law firm for all stakeholders and providing highest quality of legal advise by upholding the core values of Integrity, Quality and Respect."</p>
+            <!--<p>"To be the most trusted advisors for our clients and the most preferred law firm for all stakeholders and providing highest quality of legal advise by upholding the core values of Integrity, quality and respect."</p>-->
+        </div>
+
+        <div class="col-md-6 col-sm-12 awardbox">
+                <h1><?=get_anydata('arg_cms','title',9)?></h1>
+                <p><?=word_limiter(strip_tags(get_anydata('arg_cms','content',14)),65)?></p>
+                <a href="<?=base_url().get_anydata('arg_cms','slug',14)?>/" class="submitbutton">Read More</a>
+            </div>
+
+    </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>
+<div class="OurPeopleproject">
+    <div class="container">
+        <div class="col-sm-offset-7 col-sm-5 positionbox">
+            <h1><?=get_anydata('arg_cms','title',11)?></h1>
+            <div class="ourbusinessbg"> <p style="padding:0px;">"We Believe that Attracting, Developing and Retaining the Best Talent would ensure Delivery of Best Quality of Services and High Level of Client Satisfaction; thereby Attracting Best Quality of Work."</p></div>
+
+            <a href="<?=base_url().get_anydata('arg_cms','slug',11)?>/" class="submitbutton" id="readmore">Know More</a>
+        </div>
+    </div>
+</div>
+<div class="tabbox hidden-xs">
+    <div class="container">
+        <div class="tab-content col-md-8 col-md-push-4">
+            <div class="tab-pane active" id="tab_00">
+                <h1 style="font-family: 'Amiri', serif; margin-top:0px; font-weight:bold; text-transform: uppercase;"><?=get_anydata('arg_cms','title',7)?></h1>
+                <p><?=word_limiter(strip_tags(explode('[---]',getModuleInclude(get_anydata('arg_cms','content',7))[0])[0]))?></p>
+                <a href="<?=base_url().get_anydata('arg_cms','slug','7')?>/" class="submitbutton">Read More</a>
+            </div>
+            <?php
+            sortArrayBy('priority',$practArr,'asc');
+            foreach ($practArr as $key => $value) :?>
+            <div class="tab-pane" id="tab_<?=$key?>">
+                <h1 style="font-family: 'Amiri', serif; margin-top:0px; font-weight:bold; text-transform: uppercase;"><?=get_anydata('arg_cms','title',7)?></h1>
+                <h3 class="text-uppercase"><?=$value['title']?></h3>
+                <p><?=word_limiter(strip_tags($value['content']),100)?></p>
+                <a href="<?=base_url().get_anydata('arg_cms','slug','7');?>/<?=genSlug($value['title'])?>/" class="submitbutton">Read More</a>
+            </div>
+            <?php endforeach ?>
+        </div>
+        <!-- tab content -->
+        <ul class="nav nav-pills nav-stacked col-md-4 col-md-pull-8 ">
+            <li class="hidden"><a href="#tab_00" data-toggle="pill"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Practice Areas</a></li>
+            <?php foreach ($practArr as $key => $value) :?>
+            <li><a href="#tab_<?=$key?>" data-toggle="pill" class="text-uppercase"><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?=$value['title']?></a></li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+    <!-- end of container -->
+</div>
+<div class="tabbox hidden-md hidden-sm visible-xs">
+    <div class="container">
+        <div class="tab-content col-md-8 col-md-push-4">
+            <div class="tab-pane active" id="tab_00">
+                <h1 style="font-family: 'Amiri', serif; margin-top:0px; font-weight:bold; text-transform: uppercase;"><?=get_anydata('arg_cms','title',7)?></h1>
+                <p><?=word_limiter(strip_tags(explode('[---]',getModuleInclude(get_anydata('arg_cms','content',7))[0])[0]))?></p>
+                <a href="<?=base_url().get_anydata('arg_cms','slug','7')?>/" class="submitbutton">Read More</a>
+            </div>
+        </div>
+        <!-- tab content -->
+        <ul class="nav nav-pills nav-stacked col-md-4 col-md-pull-8 ">
+            <?php foreach ($practArr as $key => $value) :?>
+            <li><a href="<?=base_url().get_anydata('arg_cms','slug','7');?>/<?=genSlug($value['title'])?>/" class="text-uppercase"><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?=$value['title']?></a></li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+    <!-- end of container -->
+</div>
+
+  <script>
+$(document).ready(function(){
+    $('a[href^="#"]').on('click',function (e) {
+        e.preventDefault();
+
+        var target = this.hash;
+        var $target = $(target);
+
+        $('html, body').stop().animate({
+            'scrollTop': $target.offset().top-84
+        }, 900, 'swing', function () {
+            window.location.hash = target;
+        });
+    });
+});
+
+
+</script>

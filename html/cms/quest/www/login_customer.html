@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Quest Service Desk </title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="assets/login_bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="assets/css/simple-sidebar.css" rel="stylesheet">
+
+        <style>
+            body {
+                font-family: 'Lato';
+                background: lightblue;
+            }
+
+            @media (min-width: 768px){
+                .content{
+                    margin-top: 100px;
+                }
+            }
+            @media (max-width: 767px){
+                .content{
+                    margin-top: 15px;
+                }
+                .heading{
+                    font-size: 20px;
+                    margin-top: 20px !important;
+                }
+                .bg2{
+                    width: 100%;
+                    margin-bottom: 40px;
+                }
+                footer{
+                    font-size: 12px;
+                }
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="d-flex" id="wrapper">
+            <!-- /#sidebar-wrapper -->
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <!--<button class="btn btn-outline-primary" id="menu-toggle" style="margin-right: 20px;">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>-->
+                    <a class="" href="index.html">
+                        <img src="img/quest.png" alt="Quest" width="80" height="50">
+                    </a>
+                    <h6 style="margin: 0 auto;" class="heading">Quest Service Desk</h6>
+                    <!--
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+        
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Link</a>
+                        </li>
+                      </ul>
+                    </div>-->
+                </nav>
+
+                <div class="container-fluid">
+                    <div class="row content justify-content-center">
+
+                        <div class="col-sm-5">
+                            <div class="card card-primary"  style="box-shadow: 0px 6px 8px #666; -moz-box-shadow: 0px 6px 8px #666; -webkit-box-shadow: 0px 6px 8px #666;">
+                                <div class="card-header">
+                                    <h4 class="text-center" style="margin: 0;">CUSTOMER LOGIN</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form class="form-horizontal" role="form" method="POST" action="">
+                                        <input type="hidden" name="_token" value="cn9aWjLoqXFKXttzRenbQoY2PQxdGlnvNynV3DSb">
+                                        <div id="alert"></div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12 text-center p-0">
+                                                <font style="color: #006b8e;">Please login with your email id</font>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 pr-0">E-Mail Address</label>
+                                            <div class="col-sm-8">
+                                                <input type="email" class="form-control" name="email" id="email" value="">
+                                            </div>
+                                        </div>
+                                        <!--
+                                        <div class="form-group row">
+                                            <label class="col-sm-4">Password</label>
+                                            <div class="col-sm-8">
+                                                <input type="password" class="form-control" name="password" id="password">
+                                            </div>
+                                        </div>
+                                        -->
+                                        <div class="form-group row justify-content-end">
+                                            <div class="col-sm-8">
+                                                <input class="btn btn-primary" type="button" name="btnLogin" id="btnLogin" onclick=" login_chk(2);" value="Next" style="width:100%;">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div id="please_wait" align="center">
+                                <img src="img/please-wait.gif" alt="" height="100">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!--<footer class="navbar-default navbar-fixed-bottom" style="background-color: #f8f8f8; border-color: #e7e7e7; border-top: 1px solid #e7e7e7;">-->
+                <footer class="navbar footer fixed-bottom footer-light footer-shadow content container-fluid" style="background-color: #f8f8f8; border-color: #e7e7e7; border-top: 1px solid #e7e7e7;">
+                    <div class="col-sm-12 text-center">
+                        <span>Designed & Developed by <a href="http://www.rpsgventuresltd.com/" target="_blank">RPSG Ventures Limited</a></span>
+                    </div>
+                </footer>
+            </div>
+            <!-- /#page-content-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="assets/login_jquery/jquery.min.js"></script>
+        <script src="assets/login_bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="helpdesk.js"></script>
+
+        <!-- Menu Toggle Script -->
+        <script>
+                                                    $("#menu-toggle").click(function (e) {
+                                                        e.preventDefault();
+                                                        $("#wrapper").toggleClass("toggled");
+                                                    });
+
+
+                                                    $(document).ready(function () {
+                                                        $("#alert").hide();
+                                                        $("#please_wait").hide();
+                                                    });
+
+                                                    $(document).keypress(function (e) {
+                                                        if (e.which == 13) {
+                                                            $('#btnLogin').click();
+                                                        }
+                                                    });
+        </script>
+
+    </body>
+
+</html>

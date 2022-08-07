@@ -1,0 +1,35 @@
+RewriteEngine on
+
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.questmall\.in [NC]
+RewriteRule .* https://questmall.in%{REQUEST_URI} [L,R=301]
+
+RewriteCond $1 !^(index\.php|images|css|js|robots\.txt|favicon\.ico)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+
+
+
+<IfModule mod_headers.c>
+
+  <filesmatch "\.(ico|flv|jpg|jpeg|png|gif|swf)$">
+
+  Header set Cache-Control "max-age=864000, public"
+
+  </filesmatch>
+
+  <filesmatch "\.(html|htm|php)$">
+
+  Header set Cache-Control "max-age=7200, private, must-revalidate"
+
+  </filesmatch>
+
+  <filesmatch "\.(js|css)$">
+
+  Header set Cache-Control "max-age=864000, private"
+
+  </filesmatch>
+
+</IfModule>

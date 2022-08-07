@@ -1,0 +1,387 @@
+<?php
+
+namespace App\Http\Controllers\AppApiControllers;
+
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+use App\Models\AdminModels\LoftBanner;
+use App\Models\AdminModels\LoftDesigner;
+use App\Models\AdminModels\AppBanner;
+use App\Models\AdminModels\AppPush;
+use App\Models\AdminModels\StoreDeal;
+use App\Models\AdminModels\Store;
+use App\Models\AdminModels\StoreType;
+use App\Models\AdminModels\DineCuisine;
+use App\Models\AdminModels\StoreCategory;
+use App\Models\AdminModels\StoreBanner;
+use App\Models\AdminModels\Event;
+use App\Models\AdminModels\EventGallery;
+use App\Models\AdminModels\MoviePoster;
+use App\Models\AdminModels\Blog;
+use App\Models\AdminModels\BlogCategory;
+use App\Models\AdminModels\CameraFrame;
+
+class AjaxController extends Controller
+{
+	public function __construct(){
+
+    }
+
+    public function getHome(){
+        // app banner
+        $data = AppBanner::select('image')->where('active','1')->orderby('priority','asc')->get()->toArray();
+        echo json_encode($data);
+
+        // current deals
+        $data = StoreDeal::select('image','id', "post_time")->where('active','1')->orderby("post_time","DESC")->limit(5)->get()->toArray();
+        echo json_encode($data);
+
+        // new openings
+        $data = Store::select('id','logo',"post_time")
+                        ->where([['active','1'],['s_type','store']])->where(function ($query) {
+                            $query->where('category_id', 'like', '1,%')
+                                  ->orWhere('category_id', 'like', '%,1')
+                                  ->orWhere('category_id', 'like', '%,1,%')
+                                  ->orWhere('category_id', '=', '1');
+                        })->orderby("post_time","DESC")->limit(5)->get()->toArray();
+        echo json_encode($data);
+
+        // Current events
+        $data = Event::select('id', 'title','image', 'start_date')->where([['type','quest'],['active','1']])->orderby("start_date","DESC")->limit(5)->get()->toArray();
+        foreach ($data as $key => $value) {
+            $data[$key]['start_date'] = date("dS M, Y",strtotime($data[$key]['start_date']));
+        }
+        echo json_encode($data);
+
+        // loft events
+        $data = Event::select('id', 'title','image', 'start_date')->where([['type','loft'],['active','1']])->whereDate('start_date','>', date('Y-m-d'))->orderby("start_date","DESC")->limit(5)->get()->toArray();
+        foreach ($data as $key => $value) {
+            $data[$key]['start_date'] = date("dS M, Y",strtotime($data[$key]['start_date']));
+        }
+        echo json_encode($data);
+
+        // dine
+        $data = Store::select('id','logo','name',"post_time")
+                        ->where([['active','1'],['s_type','dine']])->where(function ($query) {
+                            $query->where('category_id', 'like', '1,%')
+                                  ->orWhere('category_id', 'like', '%,1')
+                                  ->orWhere('category_id', 'like', '%,1,%')
+                                  ->orWhere('category_id', '=', '1');
+                        })->orderby("post_time","DESC")->limit(5)->get()->toArray();
+        foreach ($data as $key => $value) {
+            $data[$key]['feature_img'] = StoreBanner::where([['active','1'],['featured','1'],['store_id',$value['id']]])->value('image');
+
+        }
+        echo json_encode($data);
+
+        // movies
+        $data = MoviePoster::select('image','link')->where('active','1')->orderby("priority","asc")->get()->toArray();
+        echo json_encode($data);
+
+        // blog
+        $data = Blog::select('image','id', "post_time","title","category_id")->where('active','1')->orderby("post_time","DESC")->limit(5)->get()->toArray();
+        foreach ($data as $key => $value) {
+            $data[$key]['post_time'] = date("dS M, Y",strtotime($data[$key]['post_time']));
+            $data[$key]['category_id'] = BlogCategory::find($value['category_id'])->title;
+        }
+        echo json_encode($data);
+
+
+        // top stores
+        $data = Store::select('id','logo',"post_time",'view')
+                        ->where([['active','1'],['s_type','store']])
+                        ->orderby("view","DESC")->limit(5)->get()->toArray();
+        echo json_encode($data);
+
+        // top dine
+        $data = Store::select('id','logo','name',"post_time",'view')
+                        ->where([['active','1'],['s_type','dine']])
+                        ->orderby("view","DESC")->limit(5)->get()->toArray();
+        echo json_encode($data);
+    }
+
+    public function getLoftData(){
+        // banner
+        $data = LoftBanner::select('app_image')->where('active','1')->orderby('priority','asc')->get()->toArray();
+        echo json_encode($data);
+
+
+        // Current upcomming
+        $data = Event::select('id', 'title','image', 'start_date')->where([['type','loft'],['active','1']])->whereDate('start_date','>', date('Y-m-d'))->orderby("start_date","DESC")->limit(5)->get()->toArray();
+        foreach ($data as $key => $value) {
+            $data[$key]['start_date'] = date("dS M, Y",strtotime($data[$key]['start_date']));
+        }
+        echo json_encode($data);
+
+        // loft past events
+        $data = Event::select('id', 'title','image', 'start_date')->where([['type','loft'],['active','1']])->whereDate('start_date','<=', date('Y-m-d'))->orderby("start_date","DESC")->limit(5)->get()->toArray();
+        foreach ($data as $key => $value) {
+            $data[$key]['start_date'] = date("dS M, Y",strtotime($data[$key]['start_date']));
+        }
+        echo json_encode($data);
+
+        // designer
+        $data = LoftDesigner::select('image','id')->where('active','1')->get()->toArray();
+        echo json_encode($data);
+
+    }
+
+
+    public function getBanners(){
+        $data = AppBanner::select('image')->where('active','1')->orderby('priority','asc')->get()->toArray();
+        echo json_encode($data);
+    }
+
+
+    public function getMovies(){
+        $data = MoviePoster::select('image','link')->where('active','1')->orderby("priority","asc")->get()->toArray();
+        echo json_encode($data);
+    }
+
+
+    public function getDesigners(){
+        $data = LoftDesigner::select('image','id')->where('active','1')->get()->toArray();
+        echo json_encode($data);
+    }
+
+    public function getDesigner($id){
+        $data = LoftDesigner::where([['id',$id],['active','1']])->get()->toArray();
+        echo json_encode($data);
+
+        // upcoming
+        $data = Event::select('id','title','start_date')->where([['type','loft'],['active','1']])
+                        ->whereDate('start_date','>', date('Y-m-d'))
+                        ->where(function ($query) use($id) {
+                            $query->where('designers', 'like', $id.',%')
+                                  ->orWhere('designers', 'like', '%,'.$id)
+                                  ->orWhere('designers', 'like', '%,'.$id.',%')
+                                  ->orWhere('designers', '=', $id);
+                        })->orderby("start_date","DESC")->get()->toArray();
+        foreach ($data as $key => $value) {
+            $data[$key]['start_date'] = date("dS M, Y",strtotime($data[$key]['start_date']));
+        }
+        echo json_encode($data);
+
+
+        // past
+        $data = Event::select('id','title','start_date')->where([['type','loft'],['active','1']])
+                        ->whereDate('start_date','<=', date('Y-m-d'))
+                        ->where(function ($query) use($id) {
+                            $query->where('designers', 'like', $id.',%')
+                                  ->orWhere('designers', 'like', '%,'.$id)
+                                  ->orWhere('designers', 'like', '%,'.$id.',%')
+                                  ->orWhere('designers', '=', $id);
+                        })->orderby("start_date","DESC")->get()->toArray();
+        foreach ($data as $key => $value) {
+            $data[$key]['images'] = EventGallery::select('title','image')->where([['event_id',$value['id']],['designer_id',$id], ['active','1']])->get()->toArray();
+            $data[$key]['start_date'] = date("dS M, Y",strtotime($data[$key]['start_date']));
+        }
+        echo json_encode($data);
+    }
+
+    public function getDeals($store_id=false){
+        $where = [['active','1']];
+        if($store_id){
+             array_push($where, ['store_id',$store_id]);
+        }
+        $data = StoreDeal::select('image','id', "post_time")->where($where)->orderby("post_time","DESC")->get()->toArray();
+        echo json_encode($data);
+    }
+
+    public function getDeal($id){
+        $data = StoreDeal::where([['active','1'],['id',$id]])->get()->toArray();
+        echo json_encode($data);
+    }
+
+    public function getStores($type_id,$cat_id,$floor,$cuisine,$type){
+        if ($type_id != "-0") $type_id = explode('-', substr($type_id, 1));
+        if ($cat_id != "-0") $cat_id = explode('-', substr($cat_id, 1));
+        if ($cuisine != "-0") $cuisine = explode('-', substr($cuisine, 1));
+        if ($floor != "Any Floor") $floor = explode('-', $floor);
+
+        $data = Store::select('id','name','type_id','category_id','store_phone','cuisine','logo')->where([['active','1'],['s_type',$type]]);
+
+        if ($type_id != "-0") $data = $data->whereIn('type_id', $type_id);
+        if ($cat_id != "-0") $data = $data->whereIn('category_id', $cat_id);
+        if ($floor != "Any Floor") $data = $data->whereIn('floor', $floor);
+        if ($cuisine != "-0"){
+            foreach ($cuisine as $key => $value) {
+                $data =$data->where(function ($query) use($value) {
+                        $query->where('cuisine', 'like', $value.',%')
+                              ->orWhere('cuisine', 'like', '%,'.$value)
+                              ->orWhere('cuisine', 'like', '%,'.$value.',%')
+                              ->orWhere('cuisine', '=', $value);
+                    });
+            }
+        }
+
+        $data = $data->orderby("name")->get()->toArray();
+
+        foreach ($data as $key => $value) {
+            $data[$key]['type_id'] = StoreType::find($value['type_id'])->title;
+
+            $value['category_id'] = explode(',', $value['category_id']);
+
+            if($value['category_id'][0]!='')
+            foreach ($value['category_id'] as $k => $v) {
+                $value['category_id'][$k]=StoreCategory::find($v)->title;
+            }
+            $data[$key]['category_id'] = implode(', ', $value['category_id']);
+
+            $value['cuisine'] = explode(',', $value['cuisine']);
+
+            if($value['cuisine'][0]!='')
+            foreach ($value['cuisine'] as $k => $v) {
+                $value['cuisine'][$k]=DineCuisine::find($v)->title;
+            }
+            $data[$key]['cuisine'] = implode(', ', $value['cuisine']);
+
+            $data[$key]['feature_img'] = StoreBanner::where([['active','1'],['featured','1'],['store_id',$value['id']]])->value('image');
+
+        }
+        echo json_encode($data);
+    }
+
+    public function getStore($id){
+        $data = Store::where([['active','1'],['id',$id]])->get()->toArray();
+        foreach ($data as $key => $value) {
+            $data[$key]['type_id'] = StoreType::find($value['type_id'])->title;
+
+            $value['category_id'] = explode(',', $value['category_id']);
+
+            if($value['category_id'][0]!='')
+            foreach ($value['category_id'] as $k => $v) {
+                $value['category_id'][$k]=StoreCategory::find($v)->title;
+            }
+            $data[$key]['category_id'] = implode(', ', $value['category_id']);
+
+            $value['cuisine'] = explode(',', $value['cuisine']);
+            if($value['cuisine'][0]!='')
+            foreach ($value['cuisine'] as $k => $v) {
+                $value['cuisine'][$k]=DineCuisine::find($v)->title;
+            }
+            $data[$key]['cuisine'] = implode(', ', $value['cuisine']);
+
+            $data[$key]['description'] = strip_tags($data[$key]['description']);
+            $data[$key]['banners'] = StoreBanner::where([['active','1'],['store_id',$id]])->count();
+            $data[$key]['deals'] = StoreDeal::where([['active','1'],['store_id',$id]])->count();
+        }
+        echo json_encode($data);
+    }
+
+    public function getStoreBanners($store_id){
+        $data = StoreBanner::select('image')->where([['active','1'],['store_id',$store_id]])->orderby('priority','asc')->get()->toArray();
+        echo json_encode($data);
+    }
+
+    public function getStoreTypes(){
+        $data = StoreType::select('id','title')->where([['type', 'store'],['active','1']])->orderby("title")->get()->toArray();
+        foreach ($data as $key => $value) {
+            $data[$key]['store'] = Store::where([['active','1'],['type_id',$value['id']]])->count();
+        }
+        echo json_encode($data);
+
+        $data = StoreCategory::select('id','title')->where([['type', 'store'],['active','1']])->orderby("title")->get()->toArray();
+        echo json_encode($data);
+    }
+
+    public function getDineTypes(){
+        $data = StoreType::select('id','title')->where([['type', 'dine'],['active','1']])->orderby("title")->get()->toArray();
+        echo json_encode($data);
+
+        $data = StoreCategory::select('id','title')->where([['type', 'dine'],['active','1']])->orderby("title")->get()->toArray();
+        echo json_encode($data);
+
+        $data = DineCuisine::select('id','title')->where('active','1')->orderby("title")->get()->toArray();
+        foreach ($data as $key => $value) {
+            $data[$key]['store'] = Store::where('active','1')->where(function ($query) use ($value) {
+                                            $query->where('cuisine', 'like', $value['id'].',%')
+                                                  ->orWhere('cuisine', 'like', '%,'.$value['id'])
+                                                  ->orWhere('cuisine', 'like', '%,'.$value['id'].',%')
+                                                  ->orWhere('cuisine', '=', $value['id']);
+                                        })->count();
+        }
+        echo json_encode($data);
+
+
+
+    }
+
+    public function getEvents(){
+        $data = Event::select('id', 'title','image', 'start_date')->where([['type','quest'],['active','1']])->orderby("start_date")->get()->toArray();
+        foreach ($data as $key => $value) {
+            $data[$key]['start_date'] = date("dS M, Y",strtotime($data[$key]['start_date']));
+        }
+        echo json_encode($data);
+    }
+    public function getEvent($id){
+        $data = Event::select('content', 'title','image','start_date', 'end_date')->where([['active','1'],['id',$id]])->get()->toArray();
+        foreach ($data as $key => $value) {
+            $data[$key]['start_date'] = date("dS M, Y",strtotime($data[$key]['start_date']));
+            $data[$key]['end_date'] = date("dS M, Y",strtotime($data[$key]['end_date']));
+            $data[$key]['content'] = strip_tags($data[$key]['content']);
+        }
+        echo json_encode($data);
+    }
+
+    public function getLoftEvents(){
+        $data = Event::select('id', 'title','image', 'start_date')->where([['type','loft'],['active','1']])->whereDate('start_date','<=', date('Y-m-d'))->orderby("start_date")->get()->toArray();
+        foreach ($data as $key => $value) {
+            $data[$key]['start_date'] = date("dS M, Y",strtotime($data[$key]['start_date']));
+        }
+        echo json_encode($data);
+    }
+
+    public function getLoftNewEvents(){
+        $data = Event::select('id', 'title','image', 'start_date')->where([['type','loft'],['active','1']])->whereDate('start_date','>', date('Y-m-d'))->orderby("start_date")->get()->toArray();
+        foreach ($data as $key => $value) {
+            $data[$key]['start_date'] = date("dS M, Y",strtotime($data[$key]['start_date']));
+        }
+        echo json_encode($data);
+    }
+
+    public function getBlogs($cat_id=false){
+    	$data = BlogCategory::select('id','title')->where('active','1')->orderby("title")->get()->toArray();
+        echo json_encode($data);
+
+        $data = Blog::select('image','id', "post_time","title","content","category_id")->where('active','1');
+        if ($cat_id && ($cat_id != "-0")){
+        	$cat_id = explode('-', substr($cat_id, 1));
+        	$data = $data->whereIn('category_id', $cat_id);
+        }
+
+        $data = $data->orderby("post_time","DESC")->get()->toArray();
+
+        foreach ($data as $key => $value) {
+            $data[$key]['post_time'] = date("dS M, Y",strtotime($data[$key]['post_time']));
+            $data[$key]['content'] = str_limit(strip_tags($data[$key]['content']),20);
+            $data[$key]['category_id'] = BlogCategory::find($value['category_id'])->title;
+        }
+        echo json_encode($data);
+    }
+
+    public function getBlog($id){
+        $data = Blog::where([['active','1'],['id',$id]])->get()->toArray();
+        foreach ($data as $key => $value) {
+            $data[$key]['category_id'] = BlogCategory::find($value['category_id'])->title;
+            $data[$key]['content'] = strip_tags($data[$key]['content']);
+            $data[$key]['post_time'] = date("dS M, Y",strtotime($data[$key]['post_time']));
+        }
+        echo json_encode($data);
+    }
+
+    public function getFrames(){
+        $data = CameraFrame::where('active','1')->orderby('created_at','desc')->pluck('image')->toArray();
+        echo json_encode($data);
+    }
+
+    public function getNotification(){
+        $data = AppPush::where('push','1')->orderby('push_time','desc')->get()->toArray();
+        foreach ($data as $key => $value) {
+            $data[$key]['push_time'] = \Carbon::parse($value['push_time'])->diffForHumans();
+        }
+        echo Crypt::encryptString(json_encode($data));
+    }
+}

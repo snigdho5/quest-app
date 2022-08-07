@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>New Ticket</title>
+    <script src="assets/js/jquery.js"></script>
+   <!--<script src="assets/js/jquery.mobile-1.4.5.min.js"></script>--> 
+
+    <!-- Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+
+    <!-- Styles -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Lato';
+        }
+
+        .fa-btn {
+            margin-right: 6px;
+        }
+    </style>
+   <!-- <script src="assets/js/common.js"></script>-->
+
+    <!--<script src="assets/js/mycesc.js"></script>-->
+      
+    <script src="helpdesk.js"></script>
+</head>
+<body>
+    <div data-role="page" class="jqm-demos" data-quicklinks="false" data-theme="none" id="new_complaint">
+            <script type="text/javascript">
+                $(document).ready (function () {
+                    var load = false;
+                    if (load == false) {
+                        load = true;
+                        
+                        //** Login Validation Session
+                       // app_load(1); //HINT: app_load('Page layer')
+
+                        //** HINT: createHeaderMenuFooter('Page layer', 'Header div id', 'Menu div id', 'Footer div id');
+                       // createHeaderMenuFooter(1, 'newComplaintHeader', 'newComplaintMenu', 'newComplaintFooter');
+                        
+                       // $("#detaildiv").show();
+                        $("#thanks_msg").hide();
+                        $("#alert").hide();
+                    
+                      //  var emp_code = getEmp_code();
+                        //emp_code = '993330';
+                        //$("#user_id").val(emp_code);
+                        
+                      //  var mobileNo = getMobile_no();
+                       // $("#mobile").val(mobileNo);
+                        
+                        // Set all selected value to blank
+                        //$('select').val();
+                        
+                       /* 
+                        // Get Department List
+                        getDepartmentList();
+                        
+                        // Get Main Problem Type
+                        getMainProblemType();
+                        
+                        // Get Location
+                        getLocationName();
+                        */
+                        getCategory();
+                        getLocation();
+                    }
+
+                });
+                
+            </script>
+        <div class="container">
+            <div class="navbar-header">
+
+                <!-- Collapsed Hamburger -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="#">
+                    RPSG Corpdesk
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                                                    
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Master Admin <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            </ul>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+    
+    <div class="container">
+                <script type="text/javascript">
+    function loadCSS(filename) {
+        var file = document.createElement("link");
+        file.setAttribute("rel", "stylesheet");
+        file.setAttribute("type", "text/css");
+        file.setAttribute("href", filename);
+
+        if (typeof file !== "undefined"){
+            document.getElementsByTagName("head")[0].appendChild(file)
+        }
+    }
+    loadCSS("//cdn.datatables.net/plug-ins/505bef35b56/integration/bootstrap/3/dataTables.bootstrap.css");
+    loadCSS("//cdn.datatables.net/responsive/1.0.7/css/responsive.bootstrap.min.css");
+            loadCSS("https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css");
+                    loadCSS("https://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css");
+                            loadCSS("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.19.0/codemirror.min.css");
+            loadCSS("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.19.0/theme/monokai.min.css");
+            </script><div class="panel panel-default">
+  <script> 
+        $(function(){
+          $("#header").load("menu.html"); 
+        });
+        </script>              
+<div id="header"></div>
+</div>
+    <div class="well bs-component">
+        <form ><!--<input name="_token" type="hidden" value="ucYt616MsNVd5F6du5pJ4jusItYVG7FS8sESfK0w">-->
+            <legend>Create New Ticket</legend>
+            <div id="thanks_msg">
+                        
+            </div>
+            <div id="alert"></div>
+            <div class="form-group">
+                <label for="subject" class="col-lg-2 control-label">Subject: </label>
+                <div class="col-lg-10">
+                    <input class="form-control" name="subject" type="text" id="subject">
+                    <span class="help-block">A brief of your issue</span>
+                </div>
+            </div>
+            <!--
+            <div class="form-group">
+                <label for="content" class="col-lg-2 control-label">Description: </label>
+                <div class="col-lg-10">
+                    <textarea class="form-control summernote-editor" rows="5" name="desc" cols="50" id="desc"></textarea>
+                    <span class="help-block">Describe your issue here in details</span>
+                </div>
+            </div>-->
+            <div class="form-group">
+                    <div class="form-group col-lg-4">
+                    <label for="location" class="col-lg-2 control-label">Location: </label>
+                    <div class="col-lg-6">
+                        <!--<select class="form-control" name="category_id"><option value="1">Technical</option><option value="2">Billing</option><option value="3">Customer Services</option></select>-->
+                        
+                        <select class="myInputBox" data-role="none" name='location' id="location">
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-group col-lg-4">
+                    <label for="priority" class="col-lg-2 control-label">Priority: </label>
+                    <div class="col-lg-6">
+                        <select class="form-control" name="priority" id="priority"><option value="1">Low</option><option value="2">Normal</option><option value="3">Critical</option></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category" class="col-lg-2 control-label">Category: </label>
+                    <div class="col-lg-6">
+                        <!--<select class="form-control" name="category_id"><option value="1">Technical</option><option value="2">Billing</option><option value="3">Customer Services</option></select>-->
+                        
+                        <select class="myInputBox" data-role="none" name='category' id="category">
+
+                        </select>
+                    </div>
+                </div>
+               <!-- <input name="agent_id" type="hidden" value="auto">-->
+            </div>
+            <br/>
+            <div class="form-group">
+                <div class="col-lg-6 col-lg-offset-2">
+                    <a href="" class="btn btn-default">Back</a>
+                   <!-- <a href="" class="btn btn-success" onclick=" newTicket();" >Submit</a>-->
+                    <input data-role="none" type="button" class="btn btn-info" onclick=" newTicket();" value="SUBMIT">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <!-- JavaScripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.19.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.19.0/mode/xml/xml.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.min.js"></script>
+<script>
+
+
+    $(function() {
+
+        var options = $.extend(true, {lang: '' , codemirror: {theme: 'monokai', mode: 'text/html', htmlMode: true, lineWrapping: true} } , {
+	"toolbar": [
+		["style", ["style"]],
+		["font", ["bold", "underline", "italic", "clear"]],
+		["color", ["color"]],
+		["para", ["ul", "ol", "paragraph"]],
+		["table", ["table"]],
+		["insert", ["link", "picture", "video"]],
+		["view", ["fullscreen", "codeview", "help"]]
+	]
+});
+
+        $("textarea.summernote-editor").summernote(options);
+
+        $("label[for=content]").click(function () {
+            $("#content").summernote("focus");
+        });
+    });
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,418 @@
+.latest-event h2 {
+    background: #d09918;
+    width: 27%;
+    font-size: 28px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-left: 36.5%;
+    padding: 10px;
+    margin-bottom: 50px;
+    text-align: center;
+} 
+.whats-new h2 {
+    background: #d09918;
+    width: 18%;
+    font-size: 28px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-left: 40.5%;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+.whats-new {
+    margin: 80px 0px;
+}
+
+.spencer-image{
+    background: url(../images/spencer2.jpg);
+    background-position: center;
+    background-size: cover;
+    min-height: 400px;
+}
+.container-fluid.spencer {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+     margin-bottom: 60px;
+
+}
+.spencer-text h6 {
+    font-size: 15px;
+    padding-bottom: 15px;
+}
+
+.spencer-text h5 {
+    font-size: 12px;
+    padding-bottom: 15px;
+}
+.spencer-text {
+   /* padding-left: 60px;*/
+    padding-top: 18px;
+}
+.spencer-text h3 {
+    font-size: 36px;
+    padding-bottom: 10px;
+}
+.spencer-text img {
+    width: 140px;
+    padding-top: 35px;
+}
+.spencer-text h4 a {
+    font-size: 16px;
+    color: #000;
+    border: 1px solid #333;
+    padding: 5px 20px;
+    line-height: 74px;
+    text-decoration: none;
+}
+.spencer-text h4 a:hover{
+    background: #d09918;
+    color: #fff;
+}
+
+
+div#sliderPanel {
+    margin-top: 0px !important;
+}
+.container-fluid{
+    padding-left: 0;
+    padding-right: 0;
+}
+#carouselExampleFade2 {
+    border: 0 !important;
+}
+.questmalbg .carousel-fade .carousel-item{
+    height: 425px;
+}
+.bgbox{
+    display: none;
+}
+.ourmisson {
+    left: 0px;
+    top: 10%;
+    background: #00000087;
+    width: 100%;
+    text-align: center;
+    padding-top: 19px;
+}
+.tablebook {
+    left: 40%;
+}
+
+.top-resturent {
+    text-align: center;
+    padding: 80px 0px;
+}
+
+.top-resturent h2 {
+    background: #d09918;
+    width: 27%;
+    font-size: 28px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-left: 36.5%;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+.resturent img{
+    width: 100%;
+}
+.top-resturent button.owl-prev {
+    float: left;
+    margin-top: -185px !important;
+    margin-left: -44px !important;
+    font-size: 56px !important;
+}
+.top-resturent button.owl-next {
+    float: right;
+    margin-top: -185px !important;
+    margin-right: -44px !important;
+    font-size: 56px !important;
+}
+.top-resturent button.owl-dot {
+    display: none !important;
+}
+.top-resturent .owl-carousel .owl-item img {
+    display: block;
+    width: 80%;
+}
+.top-resturent .whitecolor {
+    background: transparent;
+}
+.top-resturent .owl-theme .owl-nav {
+    margin-top: 10px;
+    display: none;
+}
+.top-resturent .owl-theme .owl-dots, .owl-theme .owl-nav {
+    margin-top: 25px;
+}
+.left-dealboximg img {
+    width: 100%;
+    height: 220px;
+    border: 1px solid #e6e6e6;
+}
+.col-lg-2.col-md-6.col-6.left-dealboximg {
+    padding: 0;
+}
+.col-lg-2.col-md-6.col-6.right-dealboximg{
+    padding: 0;
+}
+.right-dealboximg .whitecolor {
+    background: rgb(0 0 0);
+    height: 100%;
+}
+
+
+
+
+@media(max-width: 767px) and (min-width: 360px){
+    .left-dealboximg img {
+        height: 150px;
+    }
+    .top-resturent h2 {
+    width: 100%;
+     margin-left: 0; 
+    padding: 4px;
+    margin-bottom: 10px;
+}
+.ourmisson {
+    top: 0%;
+}
+.tablebook {
+    left: 20%;
+}
+.whats-new h2 {
+    width: 100%;
+    margin-left: 0;
+    padding: 4px;
+}
+.latest-event h2 {
+    width: 100%;
+    margin-left: 0;
+    padding: 4px;
+    margin-bottom: 20px;
+}
+
+
+.android a img {
+    width: 140px !important;
+    margin-bottom: 20px;
+}
+.ios a img {
+    width: 140px !important;
+    margin-bottom: 20px;
+}
+.app-offer img {
+    margin-bottom: 20px;
+}
+div#dealsbox {
+    padding-top: 30px !important;
+}
+.app-user h2 {
+    
+    width: 100%!important;
+   
+    margin-left: 0!important;
+    font-size: 25px!important;
+    padding: 5px!important;
+}
+.carousel-inner img {
+    height: auto !important;
+}
+.middile-banner {
+    min-height: 400px !important;
+}
+.top-resturent {
+    padding: 40px 0px;
+}
+#dealsbox .whitecolor .logobg {
+    top: 50%;
+}
+.latest-event {
+    padding-top: 60px;
+}
+.app-user {
+    padding: 30px 0px !important;
+}
+.googleicon img {
+    width: 140px !important;
+}
+
+}
+/*.whitecolor .logobg {
+    top: 59% !important;
+}*/
+
+
+
+.middile-banner{
+    background: url(../images/banner.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 550px;
+}
+
+#parkingNContent{
+    margin-top: -5%!important;
+}
+.current-offer img{
+    width: 100%;
+}
+.c-offer {
+    text-align: center;
+    padding: 40px 0px 80px;
+}
+
+.c-offer h2 {
+    background: #d09918;
+    width: 27%;
+    font-size: 28px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-left: 36.5%;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+.current-offer h5 {
+    padding-top: 18px;
+    text-transform: uppercase;
+    font-size: 23px;
+    font-weight: 400;
+    padding-bottom: 12px;
+}
+.offer-valid {
+    border: 1px solid;
+    width: 39%;
+    margin-left: 30%;
+}
+.offer-valid h6 {
+    font-size: 12px;
+}
+.offer-valid {
+    border: 1px solid;
+    width: 39%;
+    margin-left: 30%;
+    padding: 2px;
+}
+.offer-valid p {
+    font-size: 13px;
+    color: #740e0c;
+}
+.app-offer img{
+    width: 100%;
+}
+.app-user {
+    text-align: center;
+    padding: 50px 0px;
+}
+div#dealsbox {
+    padding-top: 50px;
+}
+.latest-event {
+    padding-top: 80px;
+}
+
+.app-user h2 {
+    background: #d09918;
+    width: 30%;
+    font-size: 28px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-left: 35%;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+.app-user button.owl-prev {
+    float: left;
+    margin-top: -230px !important;
+    margin-left: -44px !important;
+    font-size: 56px !important;
+}
+.app-user button.owl-next {
+    float: right;
+    margin-top: -230px !important;
+    margin-right: -44px !important;
+    font-size: 56px !important;
+}
+.app-user button.owl-dot {
+    display: none !important;
+}
+button.view-btn {
+    border: 1px solid #d09918;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-size: 22px;
+    line-height: 27px;
+    margin-top: 50px;
+    background: transparent;
+}
+.android a img {
+    float: left;
+    width: 150px;
+}
+.ios a img {
+    float: right;
+    width: 150px;
+    }
+    .offer-valid {
+    border: 1px solid;
+    width: 39%;
+    margin-left: 30%;
+}
+.offer-valid h6 {
+    font-size: 12px;
+}
+.offer-valid {
+    border: 1px solid;
+    width: 45%;
+    margin-left: 27%;
+    padding: 2px;
+}
+.offer-valid p{
+    font-size: 13px;
+    color: #740e0c;
+    margin-bottom: 0px;
+}
+.owl-nav {
+    display: none;
+}
+.offer-valid {
+    margin-bottom: 20px;
+}
+.mob-social.sociallink {
+        display: none;
+    }
+
+
+@media (max-width: 767px) and (min-width: 360px){
+    .mob-social.sociallink {
+        display: block !important;
+        float: right;
+    }
+    .degreeview {
+        width: 100% !important;
+    }
+    a.view360{
+        float: left;
+    }
+    .top-phone {
+        margin-top: 10px !important;
+        width: 100%;
+    }
+    .dsk {
+        display: none;
+    }
+    .header_top .sociallink li .callno {
+        margin-right: 25px !important;
+    }
+    .headercenter {
+        margin-top: 90px !important;
+    }
+}

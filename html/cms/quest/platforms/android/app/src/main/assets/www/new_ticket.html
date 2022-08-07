@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>RPSG Corp Desk </title>
+
+    <!-- Fonts -->
+    <link href="css/font-awesome.min.css" rel='stylesheet'
+        type='text/css'>
+    <link href="css/googleapi.css" rel='stylesheet' type='text/css'>
+
+    <!-- Styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Lato';
+        }
+
+        .fa-btn {
+            margin-right: 6px;
+        }
+        
+        img {
+             border-radius: 50%;
+        }
+
+    </style>
+
+    <script src="assets/js/jquery.js"></script>
+    <script src="helpdesk.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var load = false;
+            if (load == false) {
+                load = true;
+               // alert(window.localStorage.getItem("glb_val"));
+                document.getElementById("user_id").value = window.localStorage.getItem("glb_val");
+                //** Login Validation Session
+                // app_load(1); //HINT: app_load('Page layer')
+
+                //** HINT: createHeaderMenuFooter('Page layer', 'Header div id', 'Menu div id', 'Footer div id');
+                // createHeaderMenuFooter(1, 'newComplaintHeader', 'newComplaintMenu', 'newComplaintFooter');
+
+                // $("#detaildiv").show();
+                $("#thanks_msg").hide();
+                $("#alert").hide();
+                $("#div_othcat").hide();
+
+                //  var emp_code = getEmp_code();
+                //emp_code = '993330';
+                //$("#user_id").val(emp_code);
+
+                //  var mobileNo = getMobile_no();
+                // $("#mobile").val(mobileNo);
+
+                // Set all selected value to blank
+                //$('select').val();
+
+                /* 
+                 // Get Department List
+                 getDepartmentList();
+                 
+                 // Get Main Problem Type
+                 getMainProblemType();
+                 
+                 // Get Location
+                 getLocationName();
+                 */
+                getCategory();
+                getLocation();
+            }
+
+        });
+
+    </script>
+</head>
+
+<body id="app-layout">
+    <input type="hidden" name="user_id" id="user_id" />
+	<input type="hidden" name="menu_type" id="menu_type" value="1" />
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+
+                <!-- Collapsed Hamburger -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#app-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Branding Image -->
+                <div><img src="img/RPSG-LOGO-FINAL.png" alt="RPSG" height="50" width="120">&nbsp;&nbsp;&nbsp;&nbsp;
+                    Corporate Office Help Desk</div>
+            </div>
+
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            Welcome  <script>document.write(window.localStorage.getItem("glb_val"));</script> <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#" onClick="logout();"><i
+                                        class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="thanks_msg"></div>
+    <div id="alert"></div>
+    <div class="container" id="detaildiv">
+        <script type="text/javascript">
+            function loadCSS(filename) {
+                var file = document.createElement("link");
+                file.setAttribute("rel", "stylesheet");
+                file.setAttribute("type", "text/css");
+                file.setAttribute("href", filename);
+
+                if (typeof file !== "undefined") {
+                    document.getElementsByTagName("head")[0].appendChild(file)
+                }
+            }
+          /*  loadCSS("//cdn.datatables.net/plug-ins/505bef35b56/integration/bootstrap/3/dataTables.bootstrap.css");
+            loadCSS("//cdn.datatables.net/responsive/1.0.7/css/responsive.bootstrap.min.css");
+            loadCSS("https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css");
+            loadCSS("https://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css");
+            loadCSS("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.19.0/codemirror.min.css");
+            loadCSS("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.19.0/theme/monokai.min.css");*/
+        </script>
+       <!-- <div class="panel panel-default">
+            <div class="panel-body">
+                <ul class="nav nav-pills">
+                    <li role="presentation" class="active">
+                        <a href="new_ticket.html">New Ticket
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="complaint_status.html">Ticket Status </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="show_ticket.html">Show Ticket
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>-->
+		 <script src="js/menu.js"></script>
+        <div class="well bs-component">
+            <form method="POST" action="http://ticketit.kordy.info/tickets" accept-charset="UTF-8"
+                class="form-horizontal"><input name="_token" type="hidden"
+                    value="QXKZwCHDkXzXoppdWV2KlyKhPgKhFXnJxo8yctWU">
+
+                <legend>Create New Ticket</legend>
+            
+                <!-- <div class="form-group">
+                    <label for="subject" class="col-lg-2 control-label">Subject: </label>
+                    <div class="col-lg-10">
+                        <input class="form-control" name="subject" type="text" id="subject" value='' />
+                        <span class="help-block">A brief of your issue ticket</span>
+                    </div>
+                </div>
+               
+            <div class="form-group">
+                <label for="content" class="col-lg-2 control-label">Description: </label>
+                <div class="col-lg-10">
+                    <textarea class="form-control summernote-editor" rows="5" name="content" cols="50" id="content"></textarea>
+                    <span class="help-block">Describe your issue here in details</span>
+                </div>
+            </div>
+            -->
+                <div class="form-inline row">
+                    <!--
+                <div class="form-group col-lg-4">
+                    <label for="priority" class="col-lg-6 control-label">Priority: </label>
+                    <div class="col-lg-6">
+                        <select class="form-control" name="priority" id="priority"><option value="1">Low</option><option value="2">Normal</option><option value="3">Critical</option></select>
+                    </div>
+                </div>-->
+                    <div class="form-group col-lg-4">
+                        <label for="category" class="col-lg-6 control-label">Category: </label>
+                        <div class="col-lg-6" style="padding-right: 0;">
+                            <!--<select class="form-control" name="category_id"><option value="1">Technical</option><option value="2">Billing</option><option value="3">Customer Services</option></select>-->
+                            <select class="form-control" data-role="none" name='category' id="category" onchange="otherCategory();" style="width: 165px;">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-4" id="div_othcat"> 
+                        <div class="col-lg-12">
+                            <input class="form-control" type="text" name="other_category" id="other_category" placeholder="Other problem Details" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="location" class="col-lg-6 control-label">Location: </label>
+                        <div class="col-lg-6">
+                            <!--<select class="form-control" name="priority_id"><option value="1">Low</option><option value="2">Normal</option><option value="3">Critical</option></select>-->
+                            <select class="form-control" data-role="none" name='location' id="location">
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="form-inline row">
+                    <!-- <div class="form-group col-lg-4">
+                    <label for="location" class="col-lg-6 control-label">Location: </label>
+                    <div class="col-lg-6">
+                        <select class="form-control" name="priority_id"><option value="1">Low</option><option value="2">Normal</option><option value="3">Critical</option></select>
+                        <select class="form-control" data-role="none" name='location' id="location">
+
+                            </select>
+                    </div>
+                </div>-->
+                    <div class="form-group col-lg-4">
+                        <label for="mobile" class="col-lg-6 control-label">Mobile: </label>
+                        <div class="col-lg-6">
+                            <!--<select class="form-control" name="category_id"><option value="1">Technical</option><option value="2">Billing</option><option value="3">Customer Services</option></select>-->
+                            <input type="text" class="form-control" name="mobile" id="mobile" maxlength="10" onchange="mobileCheck();" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="mobile" class="col-lg-6 control-label">Intercom: </label>
+                        <div class="col-lg-6">
+                            <!--<select class="form-control" name="category_id"><option value="1">Technical</option><option value="2">Billing</option><option value="3">Customer Services</option></select>-->
+                            <input type="text" class="form-control" name="intercom" id="intercom" maxlength="6" onchange="intercomCheck();" />
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="subject" class="col-lg-2 control-label">Subject: </label>
+                    <div class="col-lg-10">
+                        <input class="form-control" name="subject" type="text" id="subject" value='' />
+                        <span class="help-block">A brief of your issue with in 130 characters</span>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <a href="http://ticketit.kordy.info/tickets?" class="btn btn-default">Back</a>
+                        <input class="btn btn-primary" type="button" onclick=" newTicket();" value="Submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- JavaScripts -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.19.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.19.0/mode/xml/xml.min.js"></script>
+
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.min.js"></script>-->
+    <!--<script>
+
+
+        $(function () {
+
+            var options = $.extend(true, { lang: '', codemirror: { theme: 'monokai', mode: 'text/html', htmlMode: true, lineWrapping: true } }, {
+                "toolbar": [
+                    ["style", ["style"]],
+                    ["font", ["bold", "underline", "italic", "clear"]],
+                    ["color", ["color"]],
+                    ["para", ["ul", "ol", "paragraph"]],
+                    ["table", ["table"]],
+                    ["insert", ["link", "picture", "video"]],
+                    ["view", ["fullscreen", "codeview", "help"]]
+                ]
+            });
+
+            $("textarea.summernote-editor").summernote(options);
+
+            $("label[for=content]").click(function () {
+                $("#content").summernote("focus");
+            });
+        });
+
+
+    </script>-->
+</body>
+
+</html>

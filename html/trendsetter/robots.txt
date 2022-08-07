@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /system/
+Disallow: /plugins/
+Disallow: /webfonts/
+Disallow: /fonts/
+Disallow: /bower_components/
+Sitemap: http://www.argus-p.com/sitemap.xml

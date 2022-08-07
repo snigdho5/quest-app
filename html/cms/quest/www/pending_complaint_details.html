@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Generation Helpdesk</title>
+
+    <!-- Fonts -->
+    <link href="css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link href="css/googleapi.css" rel='stylesheet' type='text/css'>
+    <script src="js/jquery-3.3.1.js"></script>
+
+    <!-- Styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Lato';
+        }
+
+        .fa-btn {
+            margin-right: 6px;
+        }
+    </style>
+    <script src="helpdesk.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var load = false;
+            if (load == false) {
+                load = true;
+               // alert(window.localStorage.getItem("glb_val"));
+                var docket = window.localStorage.getItem("glb_val1");
+                $("#docket_details").hide();
+                $("#solution_details").hide();
+                $("#feedback_msg").hide();
+
+                getPendingDocketDetails(docket);
+            }
+
+        });
+
+    </script>
+</head>
+<body id="app-layout">
+<input type="hidden" name="menu_type" id="menu_type" value="2" />
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+
+                <!-- Collapsed Hamburger -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Branding Image -->
+                <div><img src="img/RPSG-LOGO-FINAL.png" alt="RPSG" height="50" width="120">&nbsp;&nbsp;&nbsp;&nbsp;
+                    Generation Helpdesk</div>
+            </div>
+
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                                                    
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                               Welcome  <script>document.write(window.localStorage.getItem("glb_val"));</script><span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#" onClick="logout();"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            </ul>
+                        </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+                        <script type="text/javascript">
+    /*function loadCSS(filename) {
+        var file = document.createElement("link");
+        file.setAttribute("rel", "stylesheet");
+        file.setAttribute("type", "text/css");
+        file.setAttribute("href", filename);
+
+        if (typeof file !== "undefined"){
+            document.getElementsByTagName("head")[0].appendChild(file)
+        }
+    }
+    loadCSS("//cdn.datatables.net/plug-ins/505bef35b56/integration/bootstrap/3/dataTables.bootstrap.css");
+    loadCSS("//cdn.datatables.net/responsive/1.0.7/css/responsive.bootstrap.min.css");
+            loadCSS("https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css");
+                    loadCSS("https://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css");
+                            loadCSS("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.19.0/codemirror.min.css");
+            loadCSS("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.19.0/theme/monokai.min.css");*/
+            </script>
+			<!--<div class="panel panel-default">
+    <div class="panel-body">
+        <ul class="nav nav-pills">
+            <li role="presentation" class="">
+                <a href="new_ticket.html">New Ticket</a>
+            </li>
+            <li role="presentation" class="active">
+                <a href="complaint_status.html">Ticket Status
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>-->
+<script src="js/menu.js"></script>
+<div id="docket_details"></div>
+<div id="solution_details"></div>    
+    <!--
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="content" >
+
+        </div>
+        <form method="POST" action="http://ticketit.kordy.info/tickets/1" accept-charset="UTF-8" id="delete-ticket-1"><input name="_method" type="hidden" value="DELETE"><input name="_token" type="hidden" value="2F5Y00q3whqlw8elHxj8iU2aPB3HCXCwc2elVUfg">
+        </form>
+    </div>
+</div>
+        <h2>Comments</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Crawford Torphy
+                    <span class="pull-right"> 1 week ago </span>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="content">
+                    <p> Accusantium sapiente commodi eos voluptas. Tenetur voluptas aut est vero eligendi occaecati. Rerum doloribus accusamus exercitationem distinctio quos voluptatem.<br />
+<br />
+Dolor blanditiis est fuga quam qui maiores ipsum. Magni quae ut eum vel dolores laudantium sequi. Et ratione est odit beatae odio. Vitae unde sit sed sed voluptatem occaecati. Et magni libero modi qui.<br />
+<br />
+Esse natus iste veritatis sequi iusto rerum. Quia saepe excepturi et rerum reprehenderit quae. Distinctio doloribus odio libero omnis corporis ipsa. Animi sunt tempore aut ad possimus sunt. </p>
+                </div>
+            </div>
+        </div>
+            
+        <div class="panel panel-default">
+    <div class="panel-body">
+        <form method="POST" action="http://ticketit.kordy.info/tickets-comment" accept-charset="UTF-8" class="form-horizontal"><input name="_token" type="hidden" value="2F5Y00q3whqlw8elHxj8iU2aPB3HCXCwc2elVUfg">
+
+
+            <input name="ticket_id" type="hidden" value="1">
+
+            <fieldset>
+                <legend>Reply</legend>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <textarea class="form-control" rows="3" name="content" cols="50"></textarea>
+                    </div>
+                </div>
+
+                <div class="text-right col-md-12">
+                    <input class="btn btn-primary" type="submit" value="Submit">
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>-->
+    </div>
+
+</div>
+    <!-- JavaScripts -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+            <script>
+        $(document).ready(function() {
+            $( ".deleteit" ).click(function( event ) {
+                event.preventDefault();
+                if (confirm("Are you sure you want to delete: " + $(this).attr("node") + " ?"))
+                {
+                    var form = $(this).attr("form");
+                    $("#" + form).submit();
+                }
+
+            });
+            $('#category_id').change(function(){
+                var loadpage = "http://ticketit.kordy.info/tickets/agents/list/" + $(this).val() + "/1";
+                $('#agent_id').load(loadpage);
+            });
+            $('#confirmDelete').on('show.bs.modal', function (e) {
+                $message = $(e.relatedTarget).attr('data-message');
+                $(this).find('.modal-body p').text($message);
+                $title = $(e.relatedTarget).attr('data-title');
+                $(this).find('.modal-title').text($title);
+
+                // Pass form reference to modal for submission on yes/ok
+                var form = $(e.relatedTarget).closest('form');
+                $(this).find('.modal-footer #confirm').data('form', form);
+            });
+
+            <!-- Form confirm (yes/ok) handler, submits form -->
+            $('#confirmDelete').find('.modal-footer #confirm').on('click', function(){
+                $(this).data('form').submit();
+            });
+        });
+    </script>
+
+</body>
+</html>
